@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Ordering Website</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Background Image */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+        }
+        .navbar .left {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar .right {
+            font-size: 18px;
+        }
+        .navbar .right a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        .navbar .right a:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Section */
+        .login-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .login-section h1 {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .login-section p {
+            font-size: 18px;
+            color: #f0f0f0;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        .login-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Order Section */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .shoe-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .shoe-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        .shoe-details {
+            flex: 1;
+        }
+        .shoe-details h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .shoe-details p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .shoe-details input {
+            width: 50px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        .footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: underline;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+        .footer a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="left">Quick Shoes</div>
+        <div class="right">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#" id="login-link">Login</a>
+        </div>
+    </div>
+
+    <!-- Login Section -->
+    <div class="login-section" id="login-section">
+        <h1>Welcome to Our Shoe Store</h1>
+        <p>Discover a variety of shoes designed for all occasions. From running shoes to formal leather shoes, we have something for everyone.</p>
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+   <!-- Order Section -->
+    <div class="container" id="order-section" style="display:none;">
+        <h1 style="text-align: center;">Order Shoes</h1>
+        <form id="order-form">
+            <!-- Shoe Items -->
+            <div class="shoe-item">
+                <img src="https://contents.mediadecathlon.com/p2717212/18bb5c3bdf39ca9b494c718cf4422c75/p2717212.jpg" alt="Running Shoes">
+                <div class="shoe-details">
+                    <h2>Running Shoes</h2>
+                    <p>Price: $60</p>
+                </div>
+            </div>
+            <div class="shoe-item">
+                <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/o/x/5/3-women-formal-shoes-3-fashimo-black-original-imagcf7vhh5tb8fz-bb.jpeg?q=90&crop=false" alt="Formal Shoes">
+                <div class="shoe-details">
+                    <h2>Formal Shoes</h2>
+                    <p>Price: $90</p>
+                </div>
+            </div>
+            <div class="shoe-item">
+                <img src="https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/23869882/2024/9/26/facf4af6-dd95-4307-8ecf-cc6014e0463a1727353539670-Red-Tape-Men-Perforated-Slip-Resistant-Lace-Up-Sneakers-7881-1.jpg" alt="Casual Loafers">
+                <div class="shoe-details">
+                    <h2>Casual Loafers</h2>
+                    <p>Price: $75</p>
+                </div>
+            </div>
+            <div class="shoe-item">
+                <img src="https://s.alicdn.com/@sc04/kf/Hcfde8620d0ed4f9cb64ce2f6df4ce1c8Q.jpg_720x720q50.jpg" alt="Sneakers">
+                <div class="shoe-details">
+                    <h2>Sneakers</h2>
+                    <p>Price: $50</p>
+                </div>
+            </div>
+            <div class="shoe-item">
+                <img src="https://sreeleathers.com/cdn/shop/products/106809_250_2.jpg?v=1626850987" alt="Sandals">
+                <div class="shoe-details">
+                    <h2>Sandals</h2>
+                    <p>Price: $40</p>
+                </div>
+            </div>
+        </form>
+    </div>
+ <!-- Footer -->
+    <div class="footer">
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("Login Successful");
+            document.getElementById("login-section").style.display = "none";
+            document.getElementById("order-section").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
